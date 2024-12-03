@@ -1,19 +1,33 @@
-export function betterThanAverage(
-  classPoints: number[],
-  yourPoints: number
-): boolean {
-  // Get total of classPoints
-  let totalClassPoints = classPoints.reduce((acc, curr) => acc + curr, 0);
-
-  // Get total number of class students
-  let totalStudentsExceptMe = classPoints.length;
-
-  // Average score on class points
-  let averageScore = totalClassPoints / totalStudentsExceptMe;
-
-  if (yourPoints > averageScore) return true;
-
-  return false;
+interface Count {
+  [key: string]: number;
 }
 
-console.log(betterThanAverage([100, 40, 34, 57, 29, 72, 57, 88], 75));
+export function duplicateCount(text: string): number {
+  // Converting text to array
+  let arr = text.split("");
+
+  // Tracking count for each items
+  let count: Count = {};
+
+  // Populating the count with number of occurence of each letters
+  arr.forEach(function (i) {
+    count[i] = (count[i] || 0) + 1;
+  });
+
+  // Initialize a characters count variable to track character occurences
+  let charactersCount = 0;
+
+  // Mapping through count object
+  for (const key in count) {
+    if (count.hasOwnProperty(key)) {
+      if (count[key] > 1) {
+        charactersCount++;
+      }
+    }
+  }
+
+  // Returning the characters count
+  return charactersCount;
+}
+
+console.log(duplicateCount("abcded11"));
