@@ -1,3 +1,5 @@
+// KYU: 
+
 export function sumOfIntervals(intervals: [number, number][]) {
   if (intervals.length === 0) {
     return 0;
