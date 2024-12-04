@@ -10,7 +10,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "typescript": "nodemon src/index.ts"
+    "dev": "nodemon src/index.ts"
   },
   "author": "Tope Taiwo",
   "license": "ISC",

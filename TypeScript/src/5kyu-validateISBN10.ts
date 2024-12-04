@@ -21,6 +21,40 @@
 // X123456788   -->  false
 
 export function validISBN10(isbn: string): boolean {
-  // TODO: return true if (and only if) isbn is a valid 10-digit ISBN.
-  return true;
+  // Ensure ISBN is 10 digit long
+  if (isbn.length !== 10) return false;
+
+  // Convert isbn string into array
+  let isbnArrOfString = isbn.split("");
+
+  // Convert last item to 10 if it is X
+  if (isbnArrOfString[isbnArrOfString.length - 1].toUpperCase() == "X")
+    isbnArrOfString[isbnArrOfString.length - 1] = "10";
+
+  // Initialize a new binding with an empty array which will accept only numbers
+  let isbnArrOfNumber: number[] = [];
+
+  for (let i = 0; i < isbnArrOfString.length; i++) {
+    // Validating last item of the list
+    if (typeof +isbnArrOfString[i] != "number" || isNaN(+isbnArrOfString[i])) {
+      return false;
+    } else {
+      // Populating isbnArrOfNumber if the earlier check fails
+      isbnArrOfNumber.push(+isbnArrOfString[i]);
+    }
+  }
+
+  let totalValueOfISBN: number = 0;
+
+  for (let i = 0; i < isbnArrOfNumber.length; i++) {
+    totalValueOfISBN += isbnArrOfNumber[i] * (i + 1);
+  }
+
+  let remainder: number = totalValueOfISBN % 11;
+
+  if (remainder === 0) {
+    return true;
+  } else {
+    return false;
+  }
 }
