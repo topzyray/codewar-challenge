@@ -46,6 +46,6 @@ To run any solution locally, ensure you have the appropriate environment set up 
   Copy each problem to the index.ts file
 
   Run:
-  npm run typescript
+  npm run dev
 
   ```
